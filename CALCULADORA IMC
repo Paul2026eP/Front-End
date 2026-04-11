@@ -1,0 +1,151 @@
+
+<!--(Index.html)-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body> <!-- body classe CSS-->
+    <div class="container"> <!-- Class CSS-->
+        <h1>Calculadora de IMC</h1> <!-- h1 classe CSS-->
+        <main class="form"> <!-- form classe CSS-->
+            <label>Peso (kg)</label> <!-- label classe CSS-->
+            <input type="number" id="peso" placeholder="Ex: 75" step="0.1"> <!-- input classe CSS-->
+              <label>Altura (mt)</label>
+            <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01">
+            <button onclick="calcularIMC()">Calcular IMC</button> <!-- button classe CSS-->
+               <div id="caixa"></div>
+        </main>
+        <div id="resultado" class="resultado"></div> <!-- resultado classe CSS-->
+    </div>
+    <script src="Script.js"></script>
+</body>
+</html>
+
+<!--(Script.js)-->
+function calcularIMC () {
+    const peso = parseFloat (document.getElementById ('peso').value.replace (',','.'));
+    const altura = parseFloat (document.getElementById ('altura').value.replace (',','.'));
+    const resultadoDiv = document.getElementById ('resultado');
+
+
+    if (!peso || !altura || altura <=0) {
+        resultadoDiv.innerHTML = `<p class= "erro"> Por favor, insira peso e altura validos.</p>`; 
+        //erro classe do CSS
+        return;
+    }
+
+    const imc = (peso / (altura * altura)).toFixed(2);
+    let classificacao = '';
+
+    if (imc < 18.5) {
+        classificacao = 'Abaixo do peso';
+    } else if (imc < 25) {
+        classificacao = 'Peso normal';  
+    } else if (imc < 30) {
+        classificacao = 'Sobrepeso';
+    } else if (imc < 35) {
+        classificacao = 'Obesidade grau I';
+    } else if (imc < 40) {
+        classificacao = 'Obesidade grau II';
+    } else {
+        classificacao = 'Obesidade grau III (morbida)';
+    } 
+
+    resultadoDiv.innerHTML = ` 
+    <h2> Seu IMC: <strong>${imc} </strong></h2>
+    <p class = "classificacao"> ${classificacao}</p> 
+    `; //classificacao classe CSS
+}
+        
+
+<!--(Style.css)-->
+body {
+    background-color: #FFA07A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #E0FFFF;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #FA8072;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+    color: #444;
+}
+
+input {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+button {
+    padding: 10px;
+    background-color: #a0a0a1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 45px;
+}
+
+button:hover{
+    background-color: #4a90e2;
+}
+
+.resultado {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.resultado h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.classificacao {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.erro {
+    color: #e74c3c;
+    font-weight: bold;
+}
