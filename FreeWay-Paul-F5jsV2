@@ -1,0 +1,86 @@
+const comPista = 600; /*Variaveis var, let, const */
+const altPista = 420;
+
+let xCar1 = comPista - 62;
+let xCar2 = comPista - 62;
+let xCar3 = comPista - 62;
+let xCar4 = 13;
+let xCar5 = 13;
+let xCar6 = 13;
+let xAtor = comPista / 3;
+
+let yCar1 = 45;
+let yCar2 = 103;
+let yCar3 = 161;
+let yCar4 = 222;
+let yCar5 = 278;
+let yCar6 = 335;
+let yAtor = altPista - 36;
+
+let velCar1 = 2;
+let velCar2 = 4;
+let velCar3 = 3;
+let velCar4 = 5;
+let velCar5 = 3.5;
+let velCar6 = 2.5;
+
+function preload() {
+  pista = loadImage("img/road.png");
+  car1 = loadImage("img/car1.png");
+  car2 = loadImage("img/car2.png");
+  car3 = loadImage("img/car3.png");
+  car4 = loadImage("img/car1.png");
+  car5 = loadImage("img/car2.png");
+  car6 = loadImage("img/car3.png");
+  Ator = loadImage("img/ator.png");
+}
+
+function setup() {
+  createCanvas(comPista, altPista);
+}
+
+function draw() {
+  background(pista);
+  mostrarPersonagens();
+  movePersonagens();
+}
+
+function mostrarPersonagens() {
+  image(Ator, xAtor, yAtor, 35, 35);
+  image(car1, xCar1, yCar1, 60, 40);
+  image(car2, xCar2, yCar2, 60, 40);
+  image(car3, xCar3, yCar3, 60, 40);
+
+  push();
+  translate(xCar4 + 60, yCar4);
+  scale(-1, 1);
+  image(car4, 0, 0, 60, 40);
+  pop();
+
+  push();
+  translate(xCar5 + 60, yCar5);
+  scale(-1, 1);
+  image(car5, 0, 0, 60, 40);
+  pop();
+
+  push();
+  translate(xCar6 + 60, yCar6);
+  scale(-1, 1);
+  image(car6, 0, 0, 60, 40);
+  pop();
+}
+
+function movePersonagens() {
+  xCar1 -= velCar1;
+  if (xCar1 < -60) xCar1 = comPista;
+  xCar2 -= velCar2;
+  if (xCar2 < -60) xCar2 = comPista;
+  xCar3 -= velCar3;
+  if (xCar3 < -60) xCar3 = comPista;
+  xCar4 += velCar4;
+  if (xCar4 > comPista) xCar4 = -60;
+  xCar5 += velCar5;
+  if (xCar5 > comPista) xCar5 = -60;
+  xCar6 += velCar6;
+  if (xCar6 > comPista) xCar6 = -60;
+}
