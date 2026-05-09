@@ -1,0 +1,49 @@
+const comPista = 600; /*Variaveis var, let, const */
+const altPista = 420;
+
+let xCar1 = comPista - 62;
+let xCar2 = comPista - 62;
+let xCar3 = comPista - 62;
+let xCar4 = 13;
+let xCar5 = 13;
+let xCar6 = 13;
+
+let yCar1 = 45;
+let yCar2 = 103;
+let yCar3 = 161;
+let yCar4 = 222;
+let yCar5 = 278;
+let yCar6 = 335;
+
+let velCar1 = 2;
+let velCar2 = 4;
+let velCar3 = 3;
+let velCar4 = 5;
+let velCar5 = 3.5;
+let velCar6 = 2.5;
+
+function preload() {
+  pista = loadImage("img/road.png");
+  car1 = loadImage("img/car1.png");
+  car2 = loadImage("img/car2.png");
+  car3 = loadImage("img/car3.png");
+  car4 = loadImage("img/car1.png");
+  car5 = loadImage("img/car2.png");
+  car6 = loadImage("img/car3.png");
+  ator = loadImage("img/ator.png");
+}
+
+function setup() {
+  createCanvas(comPista, altPista);
+}
+
+function draw() {
+  background(pista);
+  mostrarPersonagens();
+  movePersonagens();
+}
+
+function mostrarPersonagens() {
+  image(car1, xCar1, yCar1, 60, 40);
+  image(car2, xCar2, yCar2, 60, 40);
+  image(car3, xCar3, yCar3, 60, 40);
