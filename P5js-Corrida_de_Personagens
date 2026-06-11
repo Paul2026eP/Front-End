@@ -1,0 +1,38 @@
+let compPista = 500;
+let altPista = 300;
+let xJog1 = 0;
+let xJog2 = 0;
+
+function setup() {
+  createCanvas(compPista, altPista);
+}
+
+function draw() {
+  background("#00FF00");
+  fill("white");
+  rect(compPista - 30, 0, 10, altPista);
+  fill("black");
+  rect(compPista - 30, 40, 10, 20);
+  rect(compPista - 30, 60, 10, 20);
+  rect(compPista - 30, 100, 10, 20);
+  rect(compPista - 30, 140, 10, 20);
+  rect(compPista - 30, 180, 10, 20);
+  rect(compPista - 30, 220, 10, 20);
+  rect(compPista - 30, 260, 10, 20);
+  textSize(43);
+  text("🏃‍➡️", xJog1, 100);
+  text("🏃‍♂️‍➡️", xJog2, 200);
+
+  xJog1 += random(5);
+  xJog2 += random(5);
+  
+  fill("black")
+  if(xJog1> compPista-30){
+    text ('Jogador 1 VENCEU!', compPista/10, altPista/2);
+    noLoop()
+  }
+    if(xJog2> compPista-30){
+    text ('Jogador 2 VENCEU!',  compPista/10, altPista/2);
+    noLoop()
+  }
+}
